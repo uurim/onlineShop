@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}- Logout{% endblock %}
+{% block content %}
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8 panel panel-default">
+<div class="alert alert-info">정말 로그아웃 하시겠습니까?</div>
+
+  <form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit">{% trans 'Sign Out' %}</button>
+</form>
+
+{% endblock %}
